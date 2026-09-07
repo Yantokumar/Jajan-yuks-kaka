@@ -1,36 +1,113 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Jajan Yuks 🍪
 
-## Getting Started
+Landing page + keranjang belanja untuk UMKM jajanan rumahan. Customer pilih produk, isi nama & alamat di website, lalu otomatis dikirim ke WhatsApp tinggal klik **Kirim**.
 
-First, run the development server:
+Dibangun dengan **Next.js 16** + **Tailwind v4** + **Framer Motion**.
+
+---
+
+## ✨ Fitur
+
+- 🛒 **Keranjang belanja** dengan `localStorage` (tetap tersimpan walau di-refresh)
+- 📱 **Form alamat** di drawer — customer tinggal isi nama + alamat, format orderan kebuka di WA otomatis
+- ⚡ **Animasi halus** pakai `framer-motion`, *reduced-motion aware*
+- 🎨 **Desain editorial warm** — palet kertas, tipografi serif, grain texture
+- 📲 **Mobile-friendly** — touch target 44px, safe-area iOS, input 16px (anti-zoom iOS)
+- 💬 **Floating cart button** dengan badge jumlah item
+
+---
+
+## 🚀 Cara Jalankan
 
 ```bash
+# Install dependency
+npm install
+
+# Mode development
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+# Buka di browser
+http://localhost:3000
+
+# Production
+npm run build
+npm run start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🗂️ Struktur Project
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+src/
+├── app/
+│   ├── globals.css     # palet warna, font, scroll, animasi global
+│   ├── layout.tsx      # root layout, font loader, viewport
+│   └── page.tsx        # halaman utama, bungkus semua section
+├── components/
+│   ├── Hero.tsx        # headline + CTA
+│   ├── Features.tsx    # 4 keunggulan
+│   ├── Products.tsx    # etalase produk, tombol +Keranjang
+│   ├── CartDrawer.tsx  # drawer keranjang + form alamat
+│   ├── CartButton.tsx  # floating button ke keranjang
+│   ├── Navbar.tsx      # sticky navbar
+│   ├── Testimonials.tsx# testimoni pelanggan
+│   ├── About.tsx       # cerita dapur
+│   ├── FAQ.tsx         # pertanyaan sering ditanya
+│   ├── Contact.tsx     # kontak & maps
+│   └── Footer.tsx
+└── lib/
+    ├── cart.tsx        # CartContext + hook useCart (localStorage)
+    └── utils.ts        # waLink, formatRupiah, buildCartWaMessage
+config/
+└── site.ts             # nomor WA, Instagram, alamat
+```
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## ⚙️ Konfigurasi
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Edit `config/site.ts` untuk ganti nomor WhatsApp, Instagram, alamat:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```ts
+export const site = {
+  name: "Jajan Yuks",
+  waNumber: "62895604867299", // nomor tujuan WA
+  instagram: "@jajanyuks",
+  address: "Jl. Dummy No.123, Jakarta",
+};
+```
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📸 Menambah Foto Produk
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Letakkan foto asli di:
+
+```
+public/products/keripik-kentang-balado.jpg
+public/products/basreng-pedas-daun-jeruk.jpg
+public/products/makaroni-keju-lumer.jpg
+# dst, sesuai id produk di Products.tsx
+```
+
+Ukuran disarankan: **400×300 px**, format `.webp` atau `.jpg`, < 80 KB.
+
+---
+
+## 🧰 Stack
+
+| Library | Versi | Fungsi |
+|---|---|---|
+| Next.js | 16.3.4 | framework |
+| React | 19.2.8 | UI |
+| Tailwind CSS | 4 | styling |
+| Framer Motion | 12 | animasi |
+| Lucide React | 1.41 | ikon |
+| React Spring | 10 | animasi drawer |
+
+---
+
+## 📜 Lisensi
+
+MIT — bebas dipakai untuk project pribadi atau komersial.
