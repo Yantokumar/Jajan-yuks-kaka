@@ -111,3 +111,9 @@ Ukuran disarankan: **400×300 px**, format `.webp` atau `.jpg`, < 80 KB.
 ## 📜 Lisensi
 
 MIT — bebas dipakai untuk project pribadi atau komersial.
+
+---
+
+<p align="center">
+  Developed with ❤️ by <a href="https://github.com/Yantokumar"><b>Bahrudin Yusup Caruban</b></a>
+</p>
